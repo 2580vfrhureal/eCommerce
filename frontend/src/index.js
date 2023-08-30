@@ -11,6 +11,9 @@ import reportWebVitals from "./reportWebVitals";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/index.css";
 import "./assets/styles/bootstrap.custom.css";
+
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 import { Provider } from "react-redux";
 import store from "./store";
 import HomeScreen from "./screens/HomeScreen";
@@ -47,7 +50,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PayPalScriptProvider deferLoading={true}>
+        <RouterProvider router={router} />
+      </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>
 );
